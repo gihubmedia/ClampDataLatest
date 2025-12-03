@@ -5,10 +5,18 @@ import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 from functools import wraps
+import scrypt
+import hashlib
+
+# Monkey patch hashlib.scrypt to use the scrypt package since Python may not have it
+if not hasattr(hashlib, 'scrypt'):
+    def _scrypt(password, salt, n, r, p, buflen=64, maxmem=0):
+        return scrypt.hash(password, salt, N=n, r=r, p=p, buflen=buflen)
+    hashlib.scrypt = _scrypt
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///clamping_business.db'
-app.config['SECRET_KEY'] = '091043239123abc'
+app.config['SECRET_KEYb'] = '091043239123abc'
 
 db = SQLAlchemy(app)
 

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% comment %} #test {% endcomment %}
+{# #test #}
 {% block header_logo %}{% endblock %}
 {% block content %}
     <div class="page-container compact">
@@ -56,11 +56,11 @@
                 @media (max-width: 900px) {
                     .data-table th, .data-table td { width: 50%; }
                 }
-                /* Separator between every row: darker, thicker, full-width across cells */
+                /* Separator between every row: removed thick grey line; keep subtle spacing */
                 .data-table tbody tr:not(:last-child) td {
-                    border-bottom: 6px solid #8f8f8f; /* darker and thicker */
+                    border-bottom: none; /* removed heavy grey divider */
                     padding-bottom: 12px;
-                    background: linear-gradient(180deg, rgba(143,143,143,0.02), transparent 40%);
+                    background: transparent; /* remove gradient separator */
                 }
                 /* Add a little top padding so rows feel separated vertically */
                 .data-table tbody tr td { padding-top: 8px; }
